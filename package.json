@@ -1,0 +1,43 @@
+{
+  "name": "superfeedr-pshb",
+  "version": "0.0.0",
+  "description": "Use Superfeedr over PubSubHubbub",
+  "main": "lib/index.js",
+  "scripts": {
+    "install": "gulp",
+    "lint": "gulp lint",
+    "test": "gulp test",
+    "clean": "gulp clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/superfeedr/superfeedr-pshb.git"
+  },
+  "keywords": [
+    "superfeedr",
+    "pshb",
+    "rss",
+    "atom"
+  ],
+  "author": "Astro <astro@spaceboyz.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/superfeedr/superfeedr-pshb/issues"
+  },
+  "devDependencies": {
+    "babel-eslint": "^5.0.0-beta4",
+    "babel-preset-es2015": "^6.1.18",
+    "del": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-eslint": "^1.1.1",
+    "gulp-standardize": "^1.1.0",
+    "tap": "^2.3.1"
+  },
+  "dependencies": {
+    "request": "^2.67.0"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  }
+}
