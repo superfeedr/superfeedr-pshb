@@ -45,7 +45,7 @@ class NotificationHandler extends process.EventEmitter {
     } else if (req.method === 'POST') {
       let m
       if ((m = (req.headers['x-hub-signature'] || '').match(/^sha1=(.+)/))) {
-        this._handleNotification(req, res, query, m[1])
+        this._handleNotification(req, res, m[1])
       } else {
         res.writeHead(400)
         res.write('X-Hub-Signature expected')
@@ -57,8 +57,8 @@ class NotificationHandler extends process.EventEmitter {
     }
   }
 
-  _handleNotification (req, res, query, signature) {
-    let url = query['hub.topic']
+  _handleNotification (req, res, signature) {
+    let url = req.headers['x-pubsubhubbub-topic']
     let hmac = crypto.createHmac('sha1', this.getSecretFor(url))
     let bufs = []
     req.on('data', data => {
