@@ -11,7 +11,7 @@ class NotificationHandler extends process.EventEmitter {
 
   /**
    * Get local 'hub.callback' URL
-   * 
+   *
    * @param {String} Feed URL
    * @return {String} URL of local endpoint
    **/
@@ -21,7 +21,7 @@ class NotificationHandler extends process.EventEmitter {
 
   /**
    * Generate 'hub.secret'
-   * 
+   *
    * @param {String} Feed URL
    **/
   getSecretFor (_url) {
