@@ -46,14 +46,14 @@ tap.test('trigger the Publisher', {
       title: title,
       content: title
     }
-  }, (err, res, body) => {
+  }, (err, res, _body) => {
     assert.ifError(err)
     assert(res.statusCode >= 200 &&
            res.statusCode < 400, 'success status')
     t.pass('triggered, waiting for notification')
   })
 
-  superfeedr.on('notification', (notification, url) => {
+  superfeedr.on('notification', (_notification, url) => {
     if (url === PUBLISHER_FEED) {
       t.end()
     }
