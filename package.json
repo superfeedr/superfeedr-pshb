@@ -4,7 +4,7 @@
   "description": "Use Superfeedr over PubSubHubbub",
   "main": "lib/index.js",
   "scripts": {
-    "install": "gulp",
+    "install": "[ -f lib/index.js ] || gulp build",
     "lint": "gulp lint",
     "test": "gulp test",
     "clean": "gulp clean"
