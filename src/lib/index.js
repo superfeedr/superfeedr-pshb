@@ -26,7 +26,7 @@ class Superfeedr extends process.EventEmitter {
     } else {
       throw new Error('No handler')
     }
-    this.handler.on('notification', (...args) => { console.log('NN', ...args); this.emit(...args) })
+    this.handler.on('notification', (...args) => { this.emit('notification', ...args) })
   }
 
   get handleRequest () {
