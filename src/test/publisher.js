@@ -23,9 +23,10 @@ var server = http.createServer(superfeedr.handleRequest)
 server.on('error', e => assert.ifError(e))
 
 const PUBLISHER_URL = 'http://push-pub.appspot.com'
+const PUBLISHER_FEED = `${PUBLISHER_URL}/feed`
 
 tap.test('subscribe to the Publisher feed', t => {
-  superfeedr.subscribe(`${PUBLISHER_URL}/feed`, (err) => {
+  superfeedr.subscribe(PUBLISHER_FEED, (err) => {
     assert.ifError(err)
     t.passing()
     // Let backends settle
@@ -52,9 +53,10 @@ tap.test('trigger the Publisher', {
     t.pass('triggered, waiting for notification')
   })
 
-  superfeedr.on('notification', (notification) => {
-    console.log('notification', notification)
-    t.end()
+  superfeedr.on('notification', (notification, url) => {
+    if (url === PUBLISHER_FEED) {
+      t.end()
+    }
   })
 })
 
