@@ -87,8 +87,6 @@ class NotificationHandler extends process.EventEmitter {
       res.writeHead(200)
       res.end()
 
-      console.log('notification', url, result)
-      console.log('this emits:', this)
       this.emit('notification', result, url)
     })
   }
