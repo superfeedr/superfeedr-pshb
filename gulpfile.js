@@ -12,11 +12,14 @@ var spawn = require('child_process').spawn
 var source = ['src/**/*.js']
 var dest = ''
 
-gulp.task('lint', () => {
+gulp.task('lint:standardize', () => {
   return gulp.src(source)
   .pipe(standardize())
   .pipe(standardize.reporter('snazzy'))
   .pipe(standardize.reporter('fail'))
+})
+gulp.task('lint:eslint', () => {
+  return gulp.src(source)
   .pipe(eslint({
     envs: ['node'],
     extends: 'eslint:recommended',
@@ -28,6 +31,7 @@ gulp.task('lint', () => {
   }))
   .pipe(eslint.format())
 })
+gulp.task('lint', ['lint:standardize', 'lint:eslint'])
 
 gulp.task('build', () => {
   return gulp.src(source)
