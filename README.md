@@ -6,6 +6,7 @@ Install and add to your `package.json` dependencies:
 npm install --save superfeedr-pshb
 ```
 
+
 # Usage
 
 ```javascript
@@ -15,6 +16,7 @@ var Superfeedr = require('superfeedr-pshb').default
 // ES6:
 import Superfeedr from 'superfeedr-pshb'
 ```
+
 
 ## Initialize and hook callback handler
 
@@ -33,12 +35,24 @@ http.createServer(function(req, res) {
   // Call PSHB handler:
   if (/^\/\.pshb/.test(req.url)) return pshbHandler(req, res)
 
-  // Do anything else your web server wants to do:
+  // Do anything else you want your web server to do:
   res.writeHead(404)
   res.write('No PSHB!')
   res.end()
 }).listen(port)
 ```
+
+
+## Event 'notification'
+
+Deal with it:
+
+```javascript
+superfeedr.on('notification', function onNotification(notification, url) {
+  // Consume here...
+})
+```
+
 
 ## superfeedr.subscribe(url, cb)
 
